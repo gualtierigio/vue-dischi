@@ -1,9 +1,15 @@
 <template>
-    <div class="card">
-        <img src="https://img.discogs.com/vknPDdrqRbT92pNRX0W4I5N91jg=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1246953-1448927086-6590.jpeg.jpg" alt="">
-        <div class="description">
-            <h3>bla bla bla</h3>
-            <p>dgnuifebgudbgujidgi</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-4 col-lg-3" v-for="(album, index) in albums" :key="index">
+                <div class="card">
+                    <img :src="album.poster" :alt="album.author">
+                    <div class="description">
+                        <p class="title">{{album.title}}</p>
+                        <p>{{album.author}} <br>{{album.year}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -35,21 +41,23 @@ export default {
 @import '../style/variables.scss';
 
 .card{
-    height: 300px;
-    width: calc(100% / 5 - 40px);
+    height: 350px;
     background-color: $base-color;
     margin: 20px;
 }
 
 img{
-    padding: 10%;
+    padding: 10% 10% 5% 10%;
 }
 
 .description{
     padding: 0 10%;
     text-align: center;
-    h3{
+    p.title{
     color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 22px;
     }
     p{
         font-size: 0.8rem;
