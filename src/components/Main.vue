@@ -1,6 +1,6 @@
 <template>
     <main class="pt-5">
-        <Search />
+        <Search @search="searchInCaracters"/>
         <Album />
     </main>
 </template>
@@ -15,6 +15,27 @@ export default {
     Album,
     Search
   },
+  data() {
+      return {
+          needle: ''
+      }
+  },
+  methods: {
+      searchInCaracters(needle) {
+          this.needle = needle;
+      }
+  },
+  computed: {
+      filterCharactersList() {
+          const newCharactersList = this.searchInCaracters.filter(
+              (element) => {
+                  element.name.toLowerCase().includes(this.needle.toLowerCase())
+              }
+          );
+
+          return newCharactersList;
+      }
+  }
 }
 </script>
 

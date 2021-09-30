@@ -4,7 +4,7 @@
             <input v-model.trim="needle" class="form-control" type="text" placeholder="chiedi cose">
         </div>
         <div>
-            <button @click="sendInputSearch(needle)" class="btn btn-outline-light" type="submit">Find it</button>
+            <button @click.prevent="$emit('search', needle)" class="btn btn-outline-light" type="submit">Find it</button>
         </div>
         <div>
             <button class="btn btn-outline-dark" type="reset">Reset</button>
