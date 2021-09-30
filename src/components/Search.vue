@@ -1,13 +1,13 @@
 <template>
-    <form class="d-flex">
+    <form class="d-flex" v-on:submit.prevent>
         <div>
-            <input class="form-control" type="text" placeholder="chiedi cose">
+            <input v-model.trim="needle" class="form-control" type="text" placeholder="chiedi cose">
         </div>
         <div>
-            <button class="btn btn-outline-light">Find it</button>
+            <button @click="sendInputSearch(needle)" class="btn btn-outline-light" type="submit">Find it</button>
         </div>
         <div>
-            <button class="btn btn-outline-dark">Reset</button>
+            <button class="btn btn-outline-dark" type="reset">Reset</button>
         </div>
     </form>
 </template>
@@ -16,7 +16,18 @@
 
 export default {
     name: 'Search',
+    data: function() {
+        return{
+            needle: '',
+        }
+    },
+    methods: {
+        sendInputSearch(neeadle){
+            console.log(neeadle);
+        }
+    }
 }
+
 </script>
 
 <style lang="scss" scoped>
